@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build image
-        run: docker build ./app/ -t abdoul223/mon-repository:latest
+        run: docker build /app/ -t abdoul223/mon-repository:latest
 
       - name: Push image to Docker Hub
         run: |
