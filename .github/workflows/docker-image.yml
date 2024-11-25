@@ -9,11 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: build image
-        run: docker build ./app/ - t abdoul223/mon-repository:latest
-      - name: push image to docker hub
-        run: 
-         docker login -u abdoul223 -p ${{secrets.DOCKER_HUB_TOKEN}}
-         docker push abdoul223/mon-repository:latest
-        
-        
+
+      - name: Build image
+        run: docker build ./app/ -t abdoul223/mon-repository:latest
+
+      - name: Push image to Docker Hub
+        run: |
+          docker login -u abdoul223 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push abdoul223/mon-repository:latest
