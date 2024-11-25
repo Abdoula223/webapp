@@ -17,5 +17,7 @@ jobs:
         run: docker build ./api/ -t abdoul223/mon-repository:latest
 
       - name: Push Docker image to Docker Hub
-        run: docker push abdoul223/mon-repository:latest
+        run: 
+            docker login -u abdoul223 -p $({secrets.DOCKER_HUB_TOKEN})
+            docker push abdoul223/mon-repository:latest
 
