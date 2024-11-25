@@ -7,18 +7,13 @@ jobs:
   publish_images:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Log in to Docker Hub
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-
-      - name: Build Docker image
-        run: docker build ./api/ -t abdoul223/mon-repository:latest
-
-      - name: Push Docker image to Docker Hub
-        run: docker push abdoul223/mon-repository:latest
+      - name: build image
+        run: docker build ./app/ - t abdoul223/mon-repository:latest
+      - name: push image to docker hub
+        run: 
+         docker login -u abdoul223 -p ${{secrets.DOCKER_HUB_TOKEN}}
+         docker push abdoul223/mon-repository:latest
+        
+        
